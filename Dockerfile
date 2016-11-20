@@ -1,6 +1,6 @@
 # Learn from beevelop/java, thanks beevelop!
 
-FROM amostsai/ubuntu_base:16.04
+FROM amostsai/ubuntu_base
 MAINTAINER Amos Tsai <amos.tsai@gmail.com>
 
 
@@ -22,6 +22,7 @@ RUN buildDeps='software-properties-common'; \
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     apt-get install -y oracle-java8-installer && \
     apt-get install -y oracle-java8-set-default && \
+    apt-get install -y libswt-gtk-3-jni libswt-gtk-3-java  # GUI library && \
 
     # clean up
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
@@ -29,3 +30,4 @@ RUN buildDeps='software-properties-common'; \
     apt-get autoremove -y && apt-get clean
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+
